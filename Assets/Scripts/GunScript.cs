@@ -1,0 +1,17 @@
+using JetBrains.Annotations;
+using System.Collections;
+using UnityEngine;
+
+public class GunScript : MonoBehaviour
+{
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireForce = 20f;
+
+    public void Fire()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+    }
+}
